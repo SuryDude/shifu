@@ -264,6 +264,8 @@ public class Normalizer {
             case OLD_ZSCALE:
             case OLD_ZSCORE:
                 return zScoreNormalize(config, raw, cutoff, categoryMissingNormType, true);
+            case EMBEDDING:
+                return embeddingNormalize(config, raw);
             case ZSCALE:
             case ZSCORE:
             default:
@@ -656,6 +658,12 @@ public class Normalizer {
         }
 
         return value;
+    }
+
+    private static List<Double> embeddingNormalize(ColumnConfig config, Object raw) {
+        List<List<Double>> embeddingNormVector = config.getBinEmbeddingNormVector();
+        int binNum = BinUtils.getBinNum(config, raw); //TODO: Add bin number check, for -1, return missing value
+        return embeddingNormVector.get(binNum);
     }
 
     private static double fillDefaultValue(ColumnConfig config, CategoryMissingNormType categoryMissingNormType) {

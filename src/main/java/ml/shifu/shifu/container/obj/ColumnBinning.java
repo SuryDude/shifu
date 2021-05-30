@@ -95,6 +95,12 @@ public class ColumnBinning {
      */
     private List<Double> binWeightedWoe;
 
+    /**
+     * Embedding norm vector for each bin
+     */
+
+    private List<List<Double>> embeddingNormVector;
+
     public Integer getLength() {
         return length;
     }
@@ -206,6 +212,20 @@ public class ColumnBinning {
     public void setBinCateMap(Map<String, Integer> binCateMap) {
         this.binCateMap = binCateMap;
     }
+
+    /**
+     * @return the embedding norm vector
+     */
+    public List<List<Double>> getEmbeddingNormVector() { return this.embeddingNormVector; }
+
+    /**
+     * @param embeddingNormVector
+     *      * the embeddingNormVector to set
+     */
+    public void setEmbeddingNormVector(List<List<Double>> embeddingNormVector) {
+        this.embeddingNormVector = embeddingNormVector;
+    }
+
 
     /**
      * Read columnbinning from input stream

@@ -15,10 +15,7 @@
  */
 package ml.shifu.shifu.actor.worker;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import ml.shifu.shifu.container.WeightAmplifier;
 import ml.shifu.shifu.container.obj.ColumnConfig;
@@ -197,4 +194,29 @@ public class DataNormalizeWorker extends AbstractWorkerActor {
         }
         return null;
     }
+
+//    public void updateEmbeddingNormVectors(List<ColumnConfig> columnConfigList) {
+//        for(columnConfig: columnConfigList) {
+//
+//        }
+//    }
+
+
+    public static List<List<Double>> getRandomEmbeddingNormVectorColumn(ColumnConfig columnConfig) {
+        List<List<Double>> randomEmbeddingNormVectorColumn = new ArrayList<>();
+        for(int i=0; i<columnConfig.getBinLength(); i++){
+            randomEmbeddingNormVectorColumn.add(getRandomEmbeddingNormVectorBin(2)); //TODO Limit length of decimal
+        }
+        return randomEmbeddingNormVectorColumn;
+    }
+
+    public static List<Double> getRandomEmbeddingNormVectorBin(int size) {
+        Random rand = new Random();
+        List<Double> randomEmbeddingNormVectorBin = Arrays.asList(new Double[size]);
+        for(int i=0; i<size; i++) {
+            randomEmbeddingNormVectorBin.set(i, rand.nextDouble());
+        }
+        return randomEmbeddingNormVectorBin;
+    }
+
 }

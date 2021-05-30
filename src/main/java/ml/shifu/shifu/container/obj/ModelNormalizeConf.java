@@ -49,6 +49,7 @@ public class ModelNormalizeConf {
         ZSCORE_APPEND_INDEX,
         WOE_APPEND_INDEX,
         WOE_ZSCALE_APPEND_INDEX,
+        EMBEDDING,
         INDEX; // both numerical and categorical norm to index, numerical index is from binBoundry, categorical index is from binCategory 
 
         public boolean isWoe() {

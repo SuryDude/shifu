@@ -302,6 +302,8 @@ public class ColumnConfig {
         return columnBinning.getBinWeightedWoe();
     }
 
+    public List<List<Double>> getBinEmbeddingNormVector() { return columnBinning.getEmbeddingNormVector(); }
+
     public void setBinLength(int length) {
         columnBinning.setLength(length);
     }
